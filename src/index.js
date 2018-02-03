@@ -1,4 +1,6 @@
+const { resolve } = require('path')
 const Koa = require('koa')
+const favicon = require('koa-favicon')
 const lowercase = require('koa-lowercase').default
 const Router = require('koa-router')
 const cacheControl = require('koa-ctx-cache-control')
@@ -23,6 +25,7 @@ router.get('/', async (ctx) => {
   ctx.body = body
 })
 
+app.use(favicon(resolve(__dirname, '..', 'favicon.ico')))
 app.use(helmet())
 app.use(compress())
 cacheControl(app)
