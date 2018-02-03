@@ -17,12 +17,15 @@ const makeTumblrLinkList = (content) => {
 }
 
 const buildBody = async () => {
-  const tumblrContent = await getTumblr('loona')
-  const tumblrPosts = new Cache(tumblrContent)
+  const tumblrPosts = new Cache()
 
   setInterval(async () => {
-    const newTumblr = await getTumblr('loona')
-    tumblrPosts.add(newTumblr)
+    try {
+      const newTumblr = await getTumblr('loona')
+      tumblrPosts.add(newTumblr)
+    } catch (e) {
+      // assume we're being rate limited, for now
+    }
   }, time1minute)
 
   // const twitterContent = await getTwitter('search/tweets', { q: 'loona' })
@@ -36,8 +39,18 @@ const buildBody = async () => {
     <meta name="keywords" content="loona">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <meta charset="utf-8">
+    <style type="text/css">
+      body {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      section {
+        margin: 16px;
+      }
+    </style>
   </head>
-  <body style="display: flex; flex-direction: row;">
+  <body>
     <section>
       <h1>Tumblr</h1>
       <ul>${makeTumblrLinkList(tumblrPosts.cache).join('')}</ul>
