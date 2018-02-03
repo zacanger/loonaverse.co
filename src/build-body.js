@@ -9,10 +9,10 @@ const time1minute = 1000 * 60
 const makeTumblrLinkList = (content) => {
   console.dir(content[0], { colors: true })
   return content.map((item) => `
-    <li>
+    <article>
       <a href="${item.post_url}" target="_blank">${item.trail.content_raw}</a>
       <br><small><a href="https://${item.blog_name}.tumblr.com/" target="_blank">${item.blog_name}</a></small>
-    </li>
+    </article>
   `)
 }
 
@@ -49,7 +49,23 @@ const buildBody = async () => {
         color: #36454F;
       }
       section {
+        display: flex;
+        padding: 8px;
+        background-color: #fbfbfb;
+        flex-direction: column;
         margin: 16px;
+      }
+      article {
+        margin: 8px;
+        box-shadow: 2px 2px 4px #999;
+        transition: .2s ease-in-out transform, .2s ease-in-out box-shadow;
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+      }
+      article:hover, article:active, article:focus {
+        box-shadow: 0 40px 80px 0 rgba(0, 0, 0, 0.15);
+        transform: translate(1px, -3px);
       }
     </style>
   </head>
@@ -57,7 +73,7 @@ const buildBody = async () => {
     ${tumblrPosts.cache && tumblrPosts.cache.length
     ? `<section>
         <h1>Tumblr</h1>
-        <ul>${makeTumblrLinkList(tumblrPosts.cache).join('')}</ul>
+        ${makeTumblrLinkList(tumblrPosts.cache).join('')}
       </section>
       ` : ''}
     <section>
