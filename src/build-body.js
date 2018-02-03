@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const getTumblr = require('./apis/tumblr')
 // const getTwitter = require('./apis/twitter')
 
@@ -5,9 +6,15 @@ const Cache = require('./cache')
 
 const time1minute = 1000 * 60
 
-const makeTumblrLinkList = (content) =>
-  content.map(({ post_url: url, slug }) =>
-    `<li><a href="${url}" target="_blank">${slug}</a></li>`)
+const makeTumblrLinkList = (content) => {
+  console.dir(content[0], { colors: true })
+  return content.map((item) => `
+    <li>
+      <a href="https://${item.blog_name}.tumblr.com/" target="_blank">${item.blog_name}</a>
+      <br><a href="${item.post_url}" target="_blank">${item.trail.content_raw}</a>
+    </li>
+  `)
+}
 
 const buildBody = async () => {
   const tumblrContent = await getTumblr('loona')
