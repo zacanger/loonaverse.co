@@ -44,6 +44,9 @@ const buildBody = async () => {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        padding: 16px;
+        font-family: sans-serif;
+        color: #36454F;
       }
       section {
         margin: 16px;
@@ -51,10 +54,12 @@ const buildBody = async () => {
     </style>
   </head>
   <body>
-    <section>
-      <h1>Tumblr</h1>
-      <ul>${makeTumblrLinkList(tumblrPosts.cache).join('')}</ul>
-    </section>
+    ${tumblrPosts.cache && tumblrPosts.cache.length
+    ? `<section>
+        <h1>Tumblr</h1>
+        <ul>${makeTumblrLinkList(tumblrPosts.cache).join('')}</ul>
+      </section>
+      ` : ''}
     <section>
       <h1>Twitter</h1>
         <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/loona" data-widget-id="959887584640958464">#loona Tweets</a>
