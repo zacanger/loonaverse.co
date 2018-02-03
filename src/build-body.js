@@ -43,7 +43,7 @@ const buildBody = async () => {
       body {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
       }
       section {
         margin: 16px;
