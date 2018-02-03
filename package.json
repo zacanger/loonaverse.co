@@ -11,7 +11,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
+    "start": "nodemon --watch src/ .",
     "test": "npm run test:lint",
     "test:lint": "eslint -c .eslintrc.json src"
   },
@@ -42,7 +42,8 @@
     "eslint-config-jane": "0.8.0",
     "eslint-plugin-babel": "4.1.2",
     "eslint-plugin-promise": "3.6.0",
-    "eslint-plugin-unicorn": "3.0.1"
+    "eslint-plugin-unicorn": "3.0.1",
+    "nodemon": "1.14.12"
   },
   "engines": {
     "node": ">=8.0.0"
