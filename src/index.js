@@ -16,7 +16,7 @@ const app = module.exports = new Koa()
 
 app.port = process.env.PORT || 6000
 
-router.get('*', async (ctx) => {
+router.get('/', async (ctx) => {
   ctx.status = 200
   ctx.type = 'text/html'
   ctx.cacheControl(time10minutes)
