@@ -10,7 +10,6 @@ const buildBody = require('./build-body')
 const router = new Router()
 
 const time1minute = 1000 * 60
-const time10minutes = 10 * time1minute
 
 const app = module.exports = new Koa()
 
@@ -19,7 +18,7 @@ app.port = process.env.PORT || 9000
 router.get('/', async (ctx) => {
   ctx.status = 200
   ctx.type = 'text/html'
-  ctx.cacheControl(time10minutes)
+  ctx.cacheControl(time1minute)
   const body = await buildBody()
   ctx.body = body
 })
