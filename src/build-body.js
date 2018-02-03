@@ -6,15 +6,13 @@ const Cache = require('./cache')
 
 const time1minute = 1000 * 60
 
-const makeTumblrLinkList = (content) => {
-  console.dir(content[0], { colors: true })
-  return content.map((item) => `
+const makeTumblrLinkList = (content) =>
+  content.map((item) => `
     <article>
       <a href="${item.post_url}" target="_blank">${item.trail.content_raw}</a>
       <br><small><a href="https://${item.blog_name}.tumblr.com/" target="_blank">${item.blog_name}</a></small>
     </article>
   `)
-}
 
 const buildBody = async () => {
   const tumblrPosts = new Cache()
@@ -64,7 +62,7 @@ const buildBody = async () => {
         padding: 8px;
       }
       article:hover, article:active, article:focus {
-        box-shadow: 0 40px 80px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
         transform: translate(1px, -3px);
       }
     </style>
