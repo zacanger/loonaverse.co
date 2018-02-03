@@ -1,6 +1,5 @@
 {
   "name": "loonaverse.co",
-  "private": true,
   "description": "The source for loonaverse.co",
   "version": "0.0.1",
   "author": {
@@ -11,7 +10,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch src/ .",
+    "dev": "nodemon --watch src/ .",
+    "start": "forever start -a -l f.log -e e.log -o o.log index.js",
     "test": "npm run test:lint",
     "test:lint": "eslint -c .eslintrc.json src"
   },
@@ -26,6 +26,7 @@
     "loonaverse.co"
   ],
   "dependencies": {
+    "forever": "0.15.3",
     "koa": "2.4.1",
     "koa-compress": "2.0.0",
     "koa-ctx-cache-control": "1.0.1",
@@ -47,5 +48,6 @@
   },
   "engines": {
     "node": ">=8.0.0"
-  }
+  },
+  "private": true
 }
