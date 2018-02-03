@@ -10,8 +10,8 @@ const makeTumblrLinkList = (content) => {
   console.dir(content[0], { colors: true })
   return content.map((item) => `
     <li>
-      <small><a href="https://${item.blog_name}.tumblr.com/" target="_blank">${item.blog_name}</a></small>
-      <br><a href="${item.post_url}" target="_blank">${item.trail.content_raw}</a>
+      <a href="${item.post_url}" target="_blank">${item.trail.content_raw}</a>
+      <br><small><a href="https://${item.blog_name}.tumblr.com/" target="_blank">${item.blog_name}</a></small>
     </li>
   `)
 }
