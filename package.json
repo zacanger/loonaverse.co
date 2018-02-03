@@ -1,6 +1,7 @@
 {
   "name": "loonaverse.co",
-  "description": "loonaverse.co",
+  "private": true,
+  "description": "The source for loonaverse.co",
   "version": "0.0.1",
   "author": {
     "name": "Zac Anger",
@@ -11,20 +12,36 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "test": ""
+    "test": "npm run test:lint",
+    "test:lint": "eslint -c .eslintrc.json src"
   },
-  "homepage": "https://github.com/zacanger/loonaverse.co#readme",
+  "homepage": "http://loonaverse.co",
   "repository": {
     "type": "git",
     "url": "https://github.com/zacanger/loonaverse.co.git"
   },
   "bugs": "https://github.com/zacanger/loonaverse.co/issues",
   "keywords": [
-    "",
+    "loona",
     "loonaverse.co"
   ],
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "koa": "2.4.1",
+    "koa-compress": "2.0.0",
+    "koa-ctx-cache-control": "1.0.1",
+    "koa-helmet": "3.3.0",
+    "koa-lowercase": "1.0.3",
+    "koa-router": "7.4.0",
+    "tumblr.js": "1.1.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "8.2.1",
+    "eslint": "4.17.0",
+    "eslint-config-jane": "0.8.0",
+    "eslint-plugin-babel": "4.1.2",
+    "eslint-plugin-promise": "3.6.0",
+    "eslint-plugin-unicorn": "3.0.1"
+  },
   "engines": {
     "node": ">=8.0.0"
   }
