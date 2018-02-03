@@ -1,4 +1,4 @@
-* get twitter working
+* twitter server side
 * naver?
 * mastodon
 * amino?
@@ -8,3 +8,5 @@
   * build cache from each source
   * expire at n hours or n posts whichever is less
   * refetch at interval
+* make a generic card-type component that works for all platforms
+* columns per platform? or all mixed together?
