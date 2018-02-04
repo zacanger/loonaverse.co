@@ -4,18 +4,32 @@ const getTumblr = require('./apis/tumblr')
 
 const Cache = require('./cache')
 
-const time1minute = 1000 * 60
+const fiveMinutes = 1000 * 60 * 5
 
 const makeTumblrLinkList = (content) =>
-  content.map((item) => `
-    <article>
-      <a href="${item.post_url}" target="_blank">${item.trail.content_raw}</a>
-      <br><small><a href="https://${item.blog_name}.tumblr.com/" target="_blank">${item.blog_name}</a></small>
-    </article>
-  `)
+  content.map((item) => {
+    const contentRaw = item.trail && item.trail[0] && item.trail[0].content_raw
+    const innerPost = contentRaw && contentRaw.split('[[MORE]]')[0] // Read More link
+    const content = item.type === 'video'
+      ? item.player && item.player[0] && item.player[0].embed_code
+      : item.type === 'photo'
+        ? item.photos.map((photo) => `<img alt="${item.blog_name}'s photo" src="${photo.original_size.url}">`).join('')
+        : innerPost
+    return `
+      <article>
+        <a href="${item.post_url}" target="_blank">${content}</a>
+        <br>
+        <small>
+          <a href="https://${item.blog_name}.tumblr.com/" target="_blank">
+            ${item.blog_name}
+          </a>
+        </small>
+      </article>
+    `
+  })
 
 const buildBody = async () => {
-  const tumblrPosts = new Cache()
+  const tumblrPosts = new Cache(require('./response'))
 
   setInterval(async () => {
     try {
@@ -24,7 +38,7 @@ const buildBody = async () => {
     } catch (e) {
       // assume we're being rate limited, for now
     }
-  }, time1minute)
+  }, fiveMinutes)
 
   // const twitterContent = await getTwitter('search/tweets', { q: 'loona' })
   return `
@@ -38,6 +52,9 @@ const buildBody = async () => {
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <meta charset="utf-8">
     <style type="text/css">
+      html {
+        background-color: #fbfbfb;
+      }
       body {
         display: flex;
         flex-direction: row;
@@ -49,7 +66,6 @@ const buildBody = async () => {
       section {
         display: flex;
         padding: 8px;
-        background-color: #fbfbfb;
         flex-direction: column;
         margin: 16px;
       }
@@ -60,10 +76,21 @@ const buildBody = async () => {
         display: flex;
         flex-direction: column;
         padding: 8px;
+        max-width: 300px;
       }
       article:hover, article:active, article:focus {
         box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
         transform: translate(1px, -3px);
+      }
+      article img {
+        max-width: 80%;
+      }
+      article a {
+        text-decoration: none;
+        color: #454f3e;
+      }
+      article small {
+        text-align: right;
       }
     </style>
   </head>
