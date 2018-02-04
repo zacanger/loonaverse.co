@@ -10,7 +10,7 @@ module.exports = (content) =>
     const content = text + imgs
     return `
       <article>
-        <small>twitter</small>
+        <!-- <small>twitter</small> -->
         <a href="${url}" target="_blank">${content}</a>
         ${user ? `
         <br>
