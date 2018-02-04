@@ -17,7 +17,7 @@ main {
 }
 
 .section-wrapper {
-  max-height: calc(100vh - 32px);
+  max-height: calc(100vh - 70px);
   margin-left: 16px; /* delete these margins when we mix cards together */
   margin-right: 16px;
   overflow-x: scroll;
@@ -49,9 +49,13 @@ article img {
   max-width: 80%;
 }
 
-article a {
+a {
   text-decoration: none;
   color: #454f3e;
+}
+
+a:hover, a:focus, a:active {
+  color: #594f61;
 }
 
 article small {

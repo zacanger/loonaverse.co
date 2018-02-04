@@ -48,7 +48,9 @@ module.exports = async () => `
 ${head}
  <body>
   <small>
-    <span>a work in progress. <a href="https://github.com/zacanger/loonaverse.co" target="_blank">code</a><span>
+    <span>
+      a <a href="https://github.com/zacanger/loonaverse.co" target="_blank">work in progress</a>, by <a href="http://zacanger.com" target="_blank">zac anger</a>.
+    <span>
   </small>
   <main>
     ${tumblrPosts.cache && tumblrPosts.cache.length ? `
