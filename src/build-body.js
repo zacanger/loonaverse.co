@@ -40,8 +40,6 @@ const buildTumblrs = async () => {
     console.trace(err)
   }
 }
-buildTumblrs()
-buildTwitters()
 
 setInterval(buildTumblrs, oneMinute)
 setInterval(buildTwitters, oneMinute)
