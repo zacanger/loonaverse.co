@@ -5,6 +5,7 @@ const css = readFileSync(resolve(__dirname, 'style.css')).toString()
 module.exports = `
  <head>
     <title>Loonaverse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Zac Anger">
     <meta name="description" content="Social post aggregator for Loona content">
     <meta name="keywords" content="loona">
