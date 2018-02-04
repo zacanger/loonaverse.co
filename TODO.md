@@ -1,6 +1,9 @@
-* naver?
-* mastodon
-* amino?
-* kakao something?
+* more platforms:
+  * naver
+  * mastodo
+  * amino
+  * kakao something
+  * instagram
 * mix all platforms together, reverse chrono order
-* handle more tags than just `loona` (member names, subunits, song titles)
+* masonry/pinterest-style layout?
+* handle more tags on twitter

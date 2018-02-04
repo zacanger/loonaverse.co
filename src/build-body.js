@@ -8,6 +8,7 @@ const tumblrUi = require('./ui/tumblr')
 const twitterUi = require('./ui/twitter')
 const head = require('./ui/head')
 const getTwitter = require('./apis/twitter')
+const tags = require('./tags')
 
 let tumblrs = require('./tumblr-seed.json')
 let twitters = require('./twitter-seed.json')
@@ -31,7 +32,7 @@ const buildTwitters = async () => {
 
 const buildTumblrs = async () => {
   try {
-    tumblrs = await getTumblr('loona')
+    tumblrs = await getTumblr(tags)
     tumblrPosts.add(tumblrs)
   } catch (_) {
     // assume rate limiting
