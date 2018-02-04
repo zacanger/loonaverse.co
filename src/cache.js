@@ -6,6 +6,6 @@ module.exports = class Cache {
   }
 
   add (posts) {
-    this.cache = take(100, [ ...posts, ...this.cache ])
+    this.cache = take(500, [ ...posts, ...this.cache ])
   }
 }

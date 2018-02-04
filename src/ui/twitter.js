@@ -6,11 +6,12 @@ module.exports = (content) =>
     const imgs = hasImgs
       ? item.extended_entities.media.map((photo) => `<img alt="${user}'s photo" src="${photo.media_url_https}">`).join('')
       : ''
+    const url = item.url || item.id_str ? `https://twitter.com/statuses/${item.id_str}` : ''
     const content = text + imgs
     return `
       <article>
         <small>twitter</small>
-        <a href="${item.url || ''}" target="_blank">${content}</a>
+        <a href="${url}" target="_blank">${content}</a>
         ${user ? `
         <br>
         <small>

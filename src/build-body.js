@@ -17,9 +17,13 @@ const twitterPosts = new Cache(twitters)
 
 const buildTwitters = async () => {
   try {
-    const res = await getTwitter.get('search/tweets', { q: 'loona' })
+    const res = await getTwitter.get('search/tweets', {
+      q: 'loona',
+      result_type: 'recent',
+      count: 100
+    })
     const twitters = res.statuses
-    tumblrPosts.add(twitters)
+    twitterPosts.add(twitters)
   } catch (_) {
     // assume i'm dumb
   }
