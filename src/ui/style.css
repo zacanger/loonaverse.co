@@ -3,12 +3,15 @@ html {
 }
 
 body {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   padding: 16px;
   font-family: sans-serif;
   color: #36454F;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .section-wrapper {
