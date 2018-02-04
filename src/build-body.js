@@ -35,6 +35,7 @@ const buildTumblrs = async () => {
   try {
     tumblrs = await getTumblr(tags)
     tumblrPosts.add(tumblrs)
+    console.log('building tumblrs')
   } catch (err) {
     console.log('Error refreshing Tumblr')
     console.trace(err)
