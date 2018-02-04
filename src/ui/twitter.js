@@ -1,3 +1,5 @@
+const { stripStyleTags } = require('../util')
+
 module.exports = (content) =>
   content.map((item) => {
     const user = (item.user && item.user.screen_name) || ''
@@ -8,15 +10,18 @@ module.exports = (content) =>
       : ''
     const url = item.url || item.id_str ? `https://twitter.com/statuses/${item.id_str}` : ''
     const content = text + imgs
+
+    const c = stripStyleTags(content)
+    const author = stripStyleTags(user)
     return `
       <article>
         <!-- <small>twitter</small> -->
-        <a href="${url}" target="_blank">${content}</a>
+        <a href="${url}" target="_blank">${c}</a>
         ${user ? `
         <br>
         <small>
-          <a href="https://twitter.com/${user}/" target="_blank">
-            @${user}
+          <a href="https://twitter.com/${author}/" target="_blank">
+            @${author}
           </a>
         </small>
       ` : ''}

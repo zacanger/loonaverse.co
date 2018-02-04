@@ -1,3 +1,5 @@
+const { stripStyleTags } = require('../util')
+
 module.exports = (content) =>
   content.map((item) => {
     const contentRaw = item.trail && item.trail[0] && item.trail[0].content_raw
@@ -7,14 +9,17 @@ module.exports = (content) =>
       : item.type === 'photo'
         ? item.photos.map((photo) => `<img alt="${item.blog_name}'s photo" src="${photo.original_size.url}">`).join('')
         : innerPost
+    const author = stripStyleTags(item.blog_name)
+    const c = stripStyleTags(content)
+
     return `
       <article>
         <!-- <small>tumblr</small> -->
-        <a href="${item.post_url}" target="_blank">${content}</a>
+        <a href="${item.post_url}" target="_blank">${c}</a>
         <br>
         <small>
-          <a href="https://${item.blog_name}.tumblr.com/" target="_blank">
-            ${item.blog_name}
+          <a href="https://${author}.tumblr.com/" target="_blank">
+            ${author}
           </a>
         </small>
       </article>
