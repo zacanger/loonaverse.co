@@ -1,23 +1,24 @@
-const tumblr = (content) =>
+module.exports = (content) =>
   content.map((item) => {
-    const contentRaw = item.trail && item.trail[0] && item.trail[0].content_raw
-    const innerPost = contentRaw && contentRaw.split('[[MORE]]')[0] // Read More link
-    const content = item.type === 'video'
-      ? item.player && item.player[0] && item.player[0].embed_code
-      : item.type === 'photo'
-        ? item.photos.map((photo) => `<img alt="${item.blog_name}'s photo" src="${photo.original_size.url}">`).join('')
-        : innerPost
+    const user = (item.user && item.user.screen_name) || ''
+    const text = item.text + '\n' || ''
+    const hasImgs = item.extended_entities && item.extended_entities.media && item.extended_entities.media.length
+    const imgs = hasImgs
+      ? item.extended_entities.media.map((photo) => `<img alt="${user}'s photo" src="${photo.media_url_https}">`).join('')
+      : ''
+    const content = text + imgs
     return `
       <article>
-        <a href="${item.post_url}" target="_blank">${content}</a>
+        <small>twitter</small>
+        <a href="${item.url || ''}" target="_blank">${content}</a>
+        ${user ? `
         <br>
         <small>
-          <a href="https://${item.blog_name}.tumblr.com/" target="_blank">
-            ${item.blog_name}
+          <a href="https://twitter.com/${user}/" target="_blank">
+            @${user}
           </a>
         </small>
+      ` : ''}
       </article>
     `
   })
-
-module.exports = (stuff) => stuff

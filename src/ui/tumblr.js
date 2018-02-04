@@ -9,6 +9,7 @@ module.exports = (content) =>
         : innerPost
     return `
       <article>
+        <small>tumblr</small>
         <a href="${item.post_url}" target="_blank">${content}</a>
         <br>
         <small>

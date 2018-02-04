@@ -34,8 +34,8 @@ const buildTumblrs = async () => {
   }
 }
 
-// setInterval(buildTumblrs, oneMinute)
-// setInterval(buildTwitters, oneMinute)
+setInterval(buildTumblrs, oneMinute)
+setInterval(buildTwitters, oneMinute)
 
 module.exports = async () => `
 <!doctype html>
@@ -48,26 +48,20 @@ ${head}
   <main>
     <div class="section-wrapper">
     ${tumblrPosts.cache && tumblrPosts.cache.length ? `
+      <h1>tumblr</h1>
       <section>
-        <h1>Tumblr</h1>
         ${tumblrUi(tumblrPosts.cache).join('')}
       </section>
     ` : ''}
     </div>
     <div class="section-wrapper">
     ${twitterPosts.cache && twitterPosts.cache.length ? `
+      <h1>twitter</h1>
       <section>
-        <h1>Twitter</h1>
         ${twitterUi(twitterPosts.cache).join('')}
       </section>
     ` : ''}
     </div>
-          <!--
-          <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/loona" data-widget-id="959887584640958464">#loona Tweets</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-      </section>
-    </div>
-    -->
   </main>
 </body>
 </html>
