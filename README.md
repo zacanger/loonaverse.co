@@ -1,7 +1,6 @@
-# loonaverse.co
+# <http://loonaverse.co>
 
---------
+The source for [Loonaverse](http://loonaverse.co), a Loona-related social post
+aggregator.
 
-## License
-
-[MIT](./LICENSE.md)
+icense: [MIT](./LICENSE.md)
