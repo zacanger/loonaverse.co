@@ -25,8 +25,9 @@ const buildTwitters = async () => {
     })
     const twitters = res.statuses
     twitterPosts.add(twitters)
-  } catch (_) {
-    // assume i'm dumb
+  } catch (err) {
+    console.log('Error refreshing Twitter')
+    console.trace(err)
   }
 }
 
@@ -34,10 +35,13 @@ const buildTumblrs = async () => {
   try {
     tumblrs = await getTumblr(tags)
     tumblrPosts.add(tumblrs)
-  } catch (_) {
-    // assume rate limiting
+  } catch (err) {
+    console.log('Error refreshing Tumblr')
+    console.trace(err)
   }
 }
+buildTumblrs()
+buildTwitters()
 
 setInterval(buildTumblrs, oneMinute)
 setInterval(buildTwitters, oneMinute)
