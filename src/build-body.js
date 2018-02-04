@@ -7,18 +7,22 @@ const makeTumblrLinkList = require('./ui/tumblr')
 const head = require('./ui/head')
 // const getTwitter = require('./apis/twitter')
 
+let tumblrs = require('./response')
+
+const tumblrPosts = new Cache(tumblrs)
+
+const buildTumblrs = async () => {
+  try {
+    tumblrs = await getTumblr('loona')
+  } catch (_) {
+    // assume rate limiting
+  }
+  tumblrPosts.add(tumblrs)
+}
+
+setInterval(buildTumblrs, fiveMinutes)
+
 module.exports = async () => {
-  const tumblrPosts = new Cache(require('./response'))
-
-  setInterval(async () => {
-    try {
-      const newTumblr = await getTumblr('loona')
-      tumblrPosts.add(newTumblr)
-    } catch (e) {
-      // assume we're being rate limited, for now
-    }
-  }, fiveMinutes)
-
   // const twitterContent = await getTwitter('search/tweets', { q: 'loona' })
   return `
   <!doctype html>
