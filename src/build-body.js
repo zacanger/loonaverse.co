@@ -1,55 +1,74 @@
 /* eslint-disable camelcase */
 
-const fiveMinutes = 1000 * 60 * 5
+const oneMinute = 1000 * 60
+// const fiveMinutes = oneMinute * 5
 const Cache = require('./cache')
 const getTumblr = require('./apis/tumblr')
-const makeTumblrLinkList = require('./ui/tumblr')
+const tumblrUi = require('./ui/tumblr')
+const twitterUi = require('./ui/twitter')
 const head = require('./ui/head')
-// const getTwitter = require('./apis/twitter')
+const getTwitter = require('./apis/twitter')
 
-let tumblrs = require('./response')
+let tumblrs = require('./tumblr-seed.json')
+let twitters = require('./twitter-seed.json')
 
 const tumblrPosts = new Cache(tumblrs)
+const twitterPosts = new Cache(twitters)
+
+const buildTwitters = async () => {
+  try {
+    const res = await getTwitter.get('search/tweets', { q: 'loona' })
+    const twitters = res.statuses
+    tumblrPosts.add(twitters)
+  } catch (_) {
+    // assume i'm dumb
+  }
+}
 
 const buildTumblrs = async () => {
   try {
     tumblrs = await getTumblr('loona')
+    tumblrPosts.add(tumblrs)
   } catch (_) {
     // assume rate limiting
   }
-  tumblrPosts.add(tumblrs)
 }
 
-setInterval(buildTumblrs, fiveMinutes)
+// setInterval(buildTumblrs, oneMinute)
+// setInterval(buildTwitters, oneMinute)
 
-module.exports = async () => {
-  // const twitterContent = await getTwitter('search/tweets', { q: 'loona' })
-  return `
-  <!doctype html>
-  <html lang="en">
-  ${head}
-   <body>
-    <small>
-      <span>a work in progress. <a href="https://github.com/zacanger/loonaverse.co" target="_blank">code</a><span>
-    </small>
-    <main>
-      <div class="section-wrapper">
-      ${tumblrPosts.cache && tumblrPosts.cache.length ? `
-        <section>
-          <h1>Tumblr</h1>
-          ${makeTumblrLinkList(tumblrPosts.cache).join('')}
-        </section>
-      ` : ''}
-      </div>
-      <div class="section-wrapper">
-        <section>
-          <h1>Twitter</h1>
-            <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/loona" data-widget-id="959887584640958464">#loona Tweets</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        </section>
-      </div>
-    </main>
-  </body>
-  </html>
+module.exports = async () => `
+<!doctype html>
+<html lang="en">
+${head}
+ <body>
+  <small>
+    <span>a work in progress. <a href="https://github.com/zacanger/loonaverse.co" target="_blank">code</a><span>
+  </small>
+  <main>
+    <div class="section-wrapper">
+    ${tumblrPosts.cache && tumblrPosts.cache.length ? `
+      <section>
+        <h1>Tumblr</h1>
+        ${tumblrUi(tumblrPosts.cache).join('')}
+      </section>
+    ` : ''}
+    </div>
+    <div class="section-wrapper">
+    ${twitterPosts.cache && twitterPosts.cache.length ? `
+      <section>
+        <h1>Twitter</h1>
+        ${twitterUi(twitterPosts.cache).join('')}
+      </section>
+    ` : ''}
+    </div>
+          <!--
+          <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/loona" data-widget-id="959887584640958464">#loona Tweets</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </section>
+    </div>
+    -->
+  </main>
+</body>
+</html>
 `
-}
