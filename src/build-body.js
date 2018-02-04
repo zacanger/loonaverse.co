@@ -50,22 +50,22 @@ ${head}
     <span>a work in progress. <a href="https://github.com/zacanger/loonaverse.co" target="_blank">code</a><span>
   </small>
   <main>
-    <div class="section-wrapper">
     ${tumblrPosts.cache && tumblrPosts.cache.length ? `
       <h1>tumblr</h1>
-      <section>
-        ${tumblrUi(tumblrPosts.cache).join('')}
-      </section>
+      <div class="section-wrapper">
+        <section>
+          ${tumblrUi(tumblrPosts.cache).join('')}
+        </section>
+      </div>
     ` : ''}
-    </div>
-    <div class="section-wrapper">
     ${twitterPosts.cache && twitterPosts.cache.length ? `
       <h1>twitter</h1>
-      <section>
-        ${twitterUi(twitterPosts.cache).join('')}
-      </section>
+      <div class="section-wrapper">
+        <section>
+          ${twitterUi(twitterPosts.cache).join('')}
+        </section>
+      </div>
     ` : ''}
-    </div>
   </main>
 </body>
 </html>
