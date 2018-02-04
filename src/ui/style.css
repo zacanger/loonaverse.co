@@ -11,6 +11,11 @@ body {
   color: #36454F;
 }
 
+.section-wrapper {
+  max-height: calc(100vh - 32px);
+  overflow-x: scroll;
+}
+
 section {
   display: flex;
   padding: 8px;
