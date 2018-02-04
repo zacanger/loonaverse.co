@@ -10,3 +10,4 @@
   * refetch at interval
 * make a generic card-type component that works for all platforms
 * columns per platform? or all mixed together?
+* keep all sections in viewport, scrollable
