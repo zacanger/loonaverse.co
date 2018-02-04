@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 
-const { stripStyleTags } = require('./util')
 const oneMinute = 1000 * 60
 // const fiveMinutes = oneMinute * 5
 const Cache = require('./cache')
@@ -44,7 +43,7 @@ setInterval(buildTumblrs, oneMinute)
 setInterval(buildTwitters, oneMinute)
 
 // i don't know where these extra tags are coming from.
-module.exports = async () => stripStyleTags(`
+module.exports = async () => `
 <!doctype html>
 <html lang="en">
 ${head}
@@ -74,4 +73,4 @@ ${head}
   </main>
 </body>
 </html>
-`)
+`
