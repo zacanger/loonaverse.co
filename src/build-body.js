@@ -41,6 +41,8 @@ const buildTumblrs = async () => {
   }
 }
 
+buildTumblrs()
+buildTwitters()
 setInterval(buildTumblrs, oneMinute)
 setInterval(buildTwitters, oneMinute)
 

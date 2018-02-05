@@ -6,7 +6,6 @@
     * amino
     * kakao something
     * instagram
-  * uniq posts by id, including retweets?
   * mix all platforms together, reverse chrono order
   * masonry/pinterest-style layout?
   * handle more tags on twitter
