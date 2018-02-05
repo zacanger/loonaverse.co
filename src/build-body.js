@@ -8,7 +8,6 @@ const tumblrUi = require('./ui/tumblr')
 const twitterUi = require('./ui/twitter')
 const head = require('./ui/head')
 const getTwitter = require('./apis/twitter')
-const tags = require('./tags')
 
 let tumblrs = require('./tumblr-seed.json')
 let twitters = require('./twitter-seed.json')
@@ -33,7 +32,7 @@ const buildTwitters = async () => {
 
 const buildTumblrs = async () => {
   try {
-    tumblrs = await getTumblr(tags)
+    tumblrs = await getTumblr('loona')
     tumblrPosts.add(tumblrs)
   } catch (err) {
     console.log('Error refreshing Tumblr')
@@ -46,7 +45,6 @@ buildTwitters()
 setInterval(buildTumblrs, oneMinute)
 setInterval(buildTwitters, oneMinute)
 
-// i don't know where these extra tags are coming from.
 module.exports = async () => `
 <!doctype html>
 <html lang="en">

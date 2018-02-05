@@ -8,6 +8,6 @@
     * instagram
   * mix all platforms together, reverse chrono order
   * masonry/pinterest-style layout?
-  * handle more tags on twitter
+  * handle more tags (see tags.js)
 * non-social (possible future features):
   * ???????/
