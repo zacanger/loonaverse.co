@@ -9,11 +9,11 @@ const twitterUi = require('./ui/twitter')
 const head = require('./ui/head')
 const getTwitter = require('./apis/twitter')
 
-let tumblrs = require('./tumblr-seed.json')
-let twitters = require('./twitter-seed.json')
+const tumblrSeed = require('./tumblr-seed.json')
+const twitterSeed = require('./twitter-seed.json')
 
-const tumblrPosts = new Cache(tumblrs)
-const twitterPosts = new Cache(twitters)
+const tumblrPosts = new Cache(tumblrSeed)
+const twitterPosts = new Cache(twitterSeed)
 
 const buildTwitters = async () => {
   try {
@@ -22,8 +22,8 @@ const buildTwitters = async () => {
       result_type: 'recent',
       count: 100
     })
-    const twitters = res.statuses
-    twitterPosts.add(twitters)
+    const newTwitters = res.statuses
+    twitterPosts.add(newTwitters)
   } catch (err) {
     console.log('Error refreshing Twitter')
     console.trace(err)
@@ -32,8 +32,8 @@ const buildTwitters = async () => {
 
 const buildTumblrs = async () => {
   try {
-    tumblrs = await getTumblr('loona')
-    tumblrPosts.add(tumblrs)
+    const newTumblrs = await getTumblr('loona')
+    tumblrPosts.add(newTumblrs)
   } catch (err) {
     console.log('Error refreshing Tumblr')
     console.trace(err)
