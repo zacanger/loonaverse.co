@@ -1,13 +1,15 @@
 /* eslint-disable camelcase */
 
 const oneMinute = 1000 * 60
-// const fiveMinutes = oneMinute * 5
+const flatten = require('zeelib/lib/flatten').default
+const fiveMinutes = oneMinute * 5
 const Cache = require('./cache')
 const getTumblr = require('./apis/tumblr')
 const tumblrUi = require('./ui/tumblr')
 const twitterUi = require('./ui/twitter')
 const head = require('./ui/head')
 const getTwitter = require('./apis/twitter')
+const tags = require('./tags')
 
 const tumblrSeed = require('./tumblr-seed.json')
 const twitterSeed = require('./twitter-seed.json')
@@ -17,12 +19,12 @@ const twitterPosts = new Cache(twitterSeed)
 
 const buildTwitters = async () => {
   try {
-    const res = await getTwitter.get('search/tweets', {
-      q: 'loona',
+    const responses = await Promise.all(tags.map((tag) => getTwitter.get('search/tweets', {
+      q: tag,
       result_type: 'recent',
       count: 100
-    })
-    const newTwitters = res.statuses
+    })))
+    const newTwitters = flatten(responses.map(({ statuses }) => statuses))
     twitterPosts.add(newTwitters)
   } catch (err) {
     console.log('Error refreshing Twitter')
@@ -32,7 +34,8 @@ const buildTwitters = async () => {
 
 const buildTumblrs = async () => {
   try {
-    const newTumblrs = await getTumblr('loona')
+    const responses = await Promise.all(tags.map((tag) => getTumblr(tag)))
+    const newTumblrs = flatten(responses)
     tumblrPosts.add(newTumblrs)
   } catch (err) {
     console.log('Error refreshing Tumblr')
@@ -42,8 +45,8 @@ const buildTumblrs = async () => {
 
 buildTumblrs()
 buildTwitters()
-setInterval(buildTumblrs, oneMinute)
-setInterval(buildTwitters, oneMinute)
+setInterval(buildTumblrs, fiveMinutes)
+setInterval(buildTwitters, fiveMinutes)
 
 module.exports = async () => `
 <!doctype html>
