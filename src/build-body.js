@@ -19,7 +19,7 @@ const twitterPosts = new Cache(twitterSeed)
 
 const buildTwitters = async () => {
   try {
-    const responses = await Promise.all(tags.map((tag) => getTwitter.get('search/tweets', {
+    const responses = await Promise.all(tags.twitter.map((tag) => getTwitter.get('search/tweets', {
       q: tag,
       result_type: 'recent',
       count: 100
@@ -34,7 +34,7 @@ const buildTwitters = async () => {
 
 const buildTumblrs = async () => {
   try {
-    const responses = await Promise.all(tags.map((tag) => getTumblr(tag)))
+    const responses = await Promise.all(tags.tumblr.map((tag) => getTumblr(tag)))
     const newTumblrs = flatten(responses)
     tumblrPosts.add(newTumblrs)
   } catch (err) {

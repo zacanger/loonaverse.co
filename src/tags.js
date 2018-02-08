@@ -1,4 +1,4 @@
-module.exports = [
+const baseTags = [
   '이달의소녀',
   'loona',
   'heejin',
@@ -19,3 +19,11 @@ module.exports = [
   'oddeyecircle',
   'oec'
 ]
+
+const twitter = [ ...baseTags ]
+const tumblr = [ ...baseTags ].map((tag) => tag.replace(/-/g, ' '))
+
+module.exports = {
+  twitter,
+  tumblr
+}
