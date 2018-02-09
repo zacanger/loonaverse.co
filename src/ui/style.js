@@ -1,3 +1,5 @@
+// vim: ft=css
+module.exports = `
 html {
   background-color: #fbfbfb;
 }
@@ -67,3 +69,4 @@ b, i, strong, em {
   font-weight: normal;
   font-style: normal;
 }
+`

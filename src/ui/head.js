@@ -1,6 +1,4 @@
-const { readFileSync } = require('fs')
-const { resolve } = require('path')
-const css = readFileSync(resolve(__dirname, 'style.css')).toString()
+const css = require('./style')
 
 module.exports = `
  <head>
