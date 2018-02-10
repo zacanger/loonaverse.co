@@ -20,8 +20,8 @@ const baseTags = [
   'oec'
 ]
 
-const twitter = [ ...baseTags ]
-const tumblr = [ ...baseTags ].map((tag) => tag.replace(/-/g, ' '))
+const twitter = baseTags
+const tumblr = baseTags.map((tag) => tag.replace(/-/g, ' '))
 
 module.exports = {
   twitter,
