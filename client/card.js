@@ -6,7 +6,7 @@ const Card = ({
   authorUrl,
   content,
   platform,
-  url,
+  url
 }) => (
   <article>
     <small>{platform}</small>

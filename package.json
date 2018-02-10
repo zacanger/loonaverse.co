@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "nodemon --watch server/ .",
     "start": "forever start -a -l f.log -e e.log -o o.log index.js",
-    "build": "webpack",
+    "build": "webpack -p",
     "test": "npm run test:lint",
     "test:lint": "eslint -c .eslintrc.json client server"
   },
