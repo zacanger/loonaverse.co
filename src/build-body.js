@@ -28,7 +28,17 @@ const twitterSeed = addTwitter(_twitterSeed)
 const tumblrPosts = new Cache(tumblrSeed)
 const twitterPosts = new Cache(twitterSeed)
 
-const buildCards = (posts) => sortByDate(posts).map(card).join('')
+const buildCards = (posts) => posts.map(card).join('')
+
+const combinePosts = (...caches) => {
+  const posts = []
+  caches.forEach((cache) => {
+    if (cache && cache.length) posts.push(...cache)
+  })
+  return sortByDate(posts.map(formatPost))
+}
+
+const buildEverything = (...caches) => buildCards(combinePosts(...caches))
 
 const buildTwitters = async () => {
   try {
@@ -37,7 +47,7 @@ const buildTwitters = async () => {
       result_type: 'recent',
       count: 100
     })))
-    const newTwitters = addTwitter(flatten(responses.map(({ statuses }) => statuses))).map(formatPost)
+    const newTwitters = addTwitter(flatten(responses.map(({ statuses }) => statuses)))
     twitterPosts.add(newTwitters)
   } catch (err) {
     console.log('Error refreshing Twitter')
@@ -48,7 +58,7 @@ const buildTwitters = async () => {
 const buildTumblrs = async () => {
   try {
     const responses = await Promise.all(tags.tumblr.map((tag) => getTumblr(tag)))
-    const newTumblrs = addTumblr(flatten(responses)).map(formatPost)
+    const newTumblrs = addTumblr(flatten(responses))
     tumblrPosts.add(newTumblrs)
   } catch (err) {
     console.log('Error refreshing Tumblr')
@@ -72,22 +82,7 @@ ${head}
     <span>
   </small>
   <main>
-    ${tumblrPosts.cache && tumblrPosts.cache.length ? `
-      <h1>tumblr</h1>
-      <div class="section-wrapper">
-        <section>
-          ${tumblrUi(tumblrPosts.cache).join('')}
-        </section>
-      </div>
-    ` : ''}
-    ${twitterPosts.cache && twitterPosts.cache.length ? `
-      <h1>twitter</h1>
-      <div class="section-wrapper">
-        <section>
-          ${twitterUi(twitterPosts.cache).join('')}
-        </section>
-      </div>
-    ` : ''}
+  ${buildEverything(tumblrPosts.cache, twitterPosts.cache)}
   </main>
 </body>
 </html>
