@@ -7,8 +7,6 @@ const Cache = require('./cache')
 const getTumblr = require('./apis/tumblr')
 
 const card = require('./ui/card')
-const tumblrUi = require('./ui/tumblr')
-const twitterUi = require('./ui/twitter')
 const head = require('./ui/head')
 
 const { sortByDate } = require('./util')
@@ -22,11 +20,10 @@ const addTumblr = addPlatform('tumblr')
 
 const _tumblrSeed = require('./tumblr-seed.json')
 const _twitterSeed = require('./twitter-seed.json')
-const tumblrSeed = addTumblr(_tumblrSeed)
-const twitterSeed = addTwitter(_twitterSeed)
+const tumblrSeed = addTumblr(_tumblrSeed).map(formatPost)
+const twitterSeed = addTwitter(_twitterSeed).map(formatPost)
 
-const tumblrPosts = new Cache(tumblrSeed)
-const twitterPosts = new Cache(twitterSeed)
+const cache = new Cache([ ...tumblrSeed, ...twitterSeed ])
 
 const buildCards = (posts) => posts.map(card).join('')
 
@@ -35,7 +32,7 @@ const combinePosts = (...caches) => {
   caches.forEach((cache) => {
     if (cache && cache.length) posts.push(...cache)
   })
-  return sortByDate(posts.map(formatPost))
+  return sortByDate(posts)
 }
 
 const buildEverything = (...caches) => buildCards(combinePosts(...caches))
@@ -47,8 +44,8 @@ const buildTwitters = async () => {
       result_type: 'recent',
       count: 100
     })))
-    const newTwitters = addTwitter(flatten(responses.map(({ statuses }) => statuses)))
-    twitterPosts.add(newTwitters)
+    const newTwitters = addTwitter(flatten(responses.map(({ statuses }) => statuses))).map(formatPost)
+    cache.add(newTwitters)
   } catch (err) {
     console.log('Error refreshing Twitter')
     console.trace(err)
@@ -58,8 +55,8 @@ const buildTwitters = async () => {
 const buildTumblrs = async () => {
   try {
     const responses = await Promise.all(tags.tumblr.map((tag) => getTumblr(tag)))
-    const newTumblrs = addTumblr(flatten(responses))
-    tumblrPosts.add(newTumblrs)
+    const newTumblrs = addTumblr(flatten(responses)).map(formatPost)
+    cache.add(newTumblrs)
   } catch (err) {
     console.log('Error refreshing Tumblr')
     console.trace(err)
@@ -82,7 +79,7 @@ ${head}
     <span>
   </small>
   <main>
-  ${buildEverything(tumblrPosts.cache, twitterPosts.cache)}
+  ${buildEverything(cache.posts)}
   </main>
 </body>
 </html>

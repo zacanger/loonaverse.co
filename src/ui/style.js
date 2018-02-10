@@ -18,20 +18,6 @@ main {
   justify-content: center;
 }
 
-.section-wrapper {
-  max-height: calc(100vh - 70px);
-  margin-left: 16px; /* delete these margins when we mix cards together */
-  margin-right: 16px;
-  overflow-x: scroll;
-}
-
-section {
-  display: flex;
-  padding: 8px;
-  flex-direction: column;
-  margin: 16px;
-}
-
 article {
   margin: 8px;
   box-shadow: 2px 2px 4px #999;

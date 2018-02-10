@@ -15,6 +15,7 @@ const formatTwitter = (post) => {
   const authorUrl = `https://twitter.com/${author}/`
   return {
     __date: date,
+    id: post.id,
     url,
     content,
     author,
@@ -39,6 +40,7 @@ const formatTumblr = (post) => {
   const authorUrl = `https://${author}.tumblr.com/`
   return {
     __date: date,
+    id: post.id,
     author,
     url,
     content,
