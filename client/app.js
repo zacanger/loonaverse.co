@@ -63,9 +63,11 @@ class App extends Component {
             />
           )}
         </header>
-        <section>
-          {ps.map((post) => <Card key={post.id} {...post} />)}
-        </section>
+        <main>
+          <section>
+            {ps.map((post) => <Card key={post.id} {...post} />)}
+          </section>
+        </main>
       </Fragment>
     )
   }
