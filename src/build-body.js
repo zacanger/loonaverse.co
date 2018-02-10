@@ -5,17 +5,30 @@ const flatten = require('zeelib/lib/flatten').default
 const fiveMinutes = oneMinute * 5
 const Cache = require('./cache')
 const getTumblr = require('./apis/tumblr')
+
+const card = require('./ui/card')
 const tumblrUi = require('./ui/tumblr')
 const twitterUi = require('./ui/twitter')
 const head = require('./ui/head')
+
+const { sortByDate } = require('./util')
 const getTwitter = require('./apis/twitter')
 const tags = require('./tags')
+const formatPost = require('./format-post')
 
-const tumblrSeed = require('./tumblr-seed.json')
-const twitterSeed = require('./twitter-seed.json')
+const addPlatform = (platform) => (posts) => posts.map((p) => ({ __platform: platform, ...p }))
+const addTwitter = addPlatform('twitter')
+const addTumblr = addPlatform('tumblr')
+
+const _tumblrSeed = require('./tumblr-seed.json')
+const _twitterSeed = require('./twitter-seed.json')
+const tumblrSeed = addTumblr(_tumblrSeed)
+const twitterSeed = addTwitter(_twitterSeed)
 
 const tumblrPosts = new Cache(tumblrSeed)
 const twitterPosts = new Cache(twitterSeed)
+
+const buildCards = (posts) => sortByDate(posts).map(card).join('')
 
 const buildTwitters = async () => {
   try {
@@ -24,7 +37,7 @@ const buildTwitters = async () => {
       result_type: 'recent',
       count: 100
     })))
-    const newTwitters = flatten(responses.map(({ statuses }) => statuses))
+    const newTwitters = addTwitter(flatten(responses.map(({ statuses }) => statuses))).map(formatPost)
     twitterPosts.add(newTwitters)
   } catch (err) {
     console.log('Error refreshing Twitter')
@@ -35,7 +48,7 @@ const buildTwitters = async () => {
 const buildTumblrs = async () => {
   try {
     const responses = await Promise.all(tags.tumblr.map((tag) => getTumblr(tag)))
-    const newTumblrs = flatten(responses)
+    const newTumblrs = addTumblr(flatten(responses)).map(formatPost)
     tumblrPosts.add(newTumblrs)
   } catch (err) {
     console.log('Error refreshing Tumblr')
