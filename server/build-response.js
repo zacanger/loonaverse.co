@@ -6,9 +6,6 @@ const fiveMinutes = oneMinute * 5
 const Cache = require('./cache')
 const getTumblr = require('./apis/tumblr')
 
-const card = require('./ui/card')
-const head = require('./ui/head')
-
 const { sortByDate } = require('./util')
 const getTwitter = require('./apis/twitter')
 const tags = require('./tags')
@@ -18,14 +15,14 @@ const addPlatform = (platform) => (posts) => posts.map((p) => ({ __platform: pla
 const addTwitter = addPlatform('twitter')
 const addTumblr = addPlatform('tumblr')
 
+const noRetweets = (posts) => posts.filter((post) => !post.in_reply_to_status_id)
+
 const _tumblrSeed = require('./tumblr-seed.json')
 const _twitterSeed = require('./twitter-seed.json')
 const tumblrSeed = addTumblr(_tumblrSeed).map(formatPost)
-const twitterSeed = addTwitter(_twitterSeed).map(formatPost)
+const twitterSeed = addTwitter(noRetweets(_twitterSeed)).map(formatPost)
 
 const cache = new Cache([ ...tumblrSeed, ...twitterSeed ])
-
-const buildCards = (posts) => posts.map(card).join('')
 
 const combinePosts = (...caches) => {
   const posts = []
@@ -35,7 +32,7 @@ const combinePosts = (...caches) => {
   return sortByDate(posts)
 }
 
-const buildEverything = (...caches) => buildCards(combinePosts(...caches))
+const buildEverything = (...caches) => combinePosts(...caches)
 
 const buildTwitters = async () => {
   try {
@@ -44,7 +41,7 @@ const buildTwitters = async () => {
       result_type: 'recent',
       count: 100
     })))
-    const newTwitters = addTwitter(flatten(responses.map(({ statuses }) => statuses))).map(formatPost)
+    const newTwitters = addTwitter(noRetweets(flatten(responses.map(({ statuses }) => statuses)))).map(formatPost)
     cache.add(newTwitters)
   } catch (err) {
     console.log('Error refreshing Twitter')
@@ -68,19 +65,4 @@ buildTwitters()
 setInterval(buildTumblrs, fiveMinutes)
 setInterval(buildTwitters, fiveMinutes)
 
-module.exports = async () => `
-<!doctype html>
-<html lang="en">
-${head}
- <body>
-  <small>
-    <span>
-      a <a href="https://github.com/zacanger/loonaverse.co" target="_blank">work in progress</a>, by <a href="http://zacanger.com" target="_blank">zac anger</a>.
-    <span>
-  </small>
-  <main>
-  ${buildEverything(cache.posts)}
-  </main>
-</body>
-</html>
-`
+module.exports = async () => buildEverything(cache.posts)
