@@ -4,15 +4,20 @@ import { string, func, bool } from 'prop-types'
 
 const Small = g.small({
   marginLeft: '8px',
-  marginRight: '8px'
+  marginRight: '8px',
+  userSelect: 'none'
+})
+
+const Label = g.label({
+  cursor: 'pointer'
 })
 
 const Checkbox = ({ platform, handleChange, checked }) => (
   <Small>
-    <label htmlFor={platform}>
-      <input type="checkbox" value={platform} checked={checked} onChange={handleChange} />
+    <Label htmlFor={platform}>
+      <input id={platform} type="checkbox" value={platform} checked={checked} onChange={handleChange} />
       {platform}
-    </label>
+    </Label>
   </Small>
 )
 
