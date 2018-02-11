@@ -6,10 +6,7 @@
     * amino
     * kakao something
     * instagram
-  * mix all platforms together, reverse chrono order
-  * toggle platform visibility
-  * masonry/pinterest-style layout?
-  * format each type of post into a single post shape, so the same component can
-    be used for all types
+  * cache tumblr and twitter seperately again, since twitter is so overwhelming
+    it pushes out the good tumblr posts
 * non-social (possible future features):
   * ???????/

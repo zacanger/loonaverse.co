@@ -10,10 +10,11 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch src/ .",
+    "dev": "nodemon --watch server/ .",
     "start": "forever start -a -l f.log -e e.log -o o.log index.js",
+    "build": "webpack -p",
     "test": "npm run test:lint",
-    "test:lint": "eslint -c .eslintrc.json src"
+    "test:lint": "eslint -c .eslintrc.json client server"
   },
   "homepage": "http://loonaverse.co",
   "repository": {
@@ -34,18 +35,33 @@
     "koa-helmet": "3.3.0",
     "koa-lowercase": "1.0.3",
     "koa-router": "7.4.0",
+    "koa-simple-static": "0.9.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "react-masonry-component": "6.0.2",
     "tumblr.js": "1.1.1",
     "twitter": "1.7.1",
     "zeelib": "5.0.0"
   },
   "devDependencies": {
+    "babel-core": "6.26.0",
     "babel-eslint": "8.2.1",
+    "babel-loader": "7.1.2",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.13",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-react": "6.24.1",
     "eslint": "4.17.0",
     "eslint-config-jane": "0.8.1",
     "eslint-plugin-babel": "4.1.2",
+    "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-promise": "3.6.0",
+    "eslint-plugin-react": "7.6.1",
     "eslint-plugin-unicorn": "3.0.1",
-    "nodemon": "1.14.12"
+    "nodemon": "1.14.12",
+    "prop-types": "15.6.0",
+    "webpack": "3.11.0"
   },
   "engines": {
     "node": ">=8.0.0"

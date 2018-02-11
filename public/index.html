@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+ <head>
+    <title>Loonaverse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Zac Anger">
+    <meta name="description" content="Social post aggregator for Loona content">
+    <meta name="keywords" content="loona">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <meta charset="utf-8">
+    <style type="text/css">${css}</style>
+    <style type="text/css">
+      html {
+        background-color: #fbfbfb;
+      }
+
+      body {
+        padding: 16px;
+        font-family: sans-serif;
+        color: #36454F;
+      }
+
+      header {
+        display: flex;
+        flex-direction: column;
+      }
+
+      article {
+        margin: 8px;
+        box-shadow: 2px 2px 4px #999;
+        transition: .2s ease-in-out transform, .2s ease-in-out box-shadow;
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        max-width: 300px;
+      }
+
+      article:hover, article:active, article:focus {
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
+        transform: translate(1px, -3px);
+      }
+
+      article img {
+        max-width: 80%;
+      }
+
+      a {
+        text-decoration: none;
+        color: #454f3e;
+      }
+
+      a:hover, a:focus, a:active {
+        color: #594f61;
+      }
+
+      article small {
+        text-align: right;
+      }
+
+      /* override tags embedded in posts */
+      b, i, strong, em {
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"><div>
+    <script src="/bundle.js"></script>
+  </body>
+</html>
