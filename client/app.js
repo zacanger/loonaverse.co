@@ -65,7 +65,7 @@ class App extends Component {
           )}
         </header>
         <main>
-          <Masonry elementType="section">
+          <Masonry updateOnEachImageLoad elementType="section">
             {ps.map((post) => <Card key={post.id} {...post} />)}
           </Masonry>
         </main>
