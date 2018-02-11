@@ -4,9 +4,18 @@ import Card from './card'
 import Info from './info'
 import Checkbox from './checkbox'
 
+const Logo = g.img({
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  maxWidth: '100%',
+  height: 'auto',
+  display: 'block'
+})
+
 const Toggles = g.div({
   paddingRight: '32px'
 })
+
 const Header = g.header({
   display: 'flex',
   flexDirection: 'row',
@@ -92,7 +101,8 @@ class App extends Component {
         </Header>
         <main>
           <Section>
-            {ps.map((post) => <Card key={post.id} {...post} />)}
+            {!!ps.length && ps.map((post) => <Card key={post.id} {...post} />)}
+            {!ps.length && <Logo src="/logo.png" alt="Loona Logo" />}
           </Section>
         </main>
       </Fragment>
