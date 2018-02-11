@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import Masonry from 'react-masonry-component'
 import Card from './card'
 import Info from './info'
 import Checkbox from './checkbox'
@@ -64,9 +65,9 @@ class App extends Component {
           )}
         </header>
         <main>
-          <section>
+          <Masonry elementType="section">
             {ps.map((post) => <Card key={post.id} {...post} />)}
-          </section>
+          </Masonry>
         </main>
       </Fragment>
     )
