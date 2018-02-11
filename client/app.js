@@ -1,8 +1,21 @@
 import React, { Component, Fragment } from 'react'
-import Masonry from 'react-masonry-component'
+import g from 'glamorous'
 import Card from './card'
 import Info from './info'
 import Checkbox from './checkbox'
+
+const Header = g.header({
+  position: 'fixed',
+  padding: '8px',
+  background: 'white',
+  zIndex: 3
+})
+
+const Section = g.section({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap'
+})
 
 const oneMinute = 60 * 1000
 const platforms = [ 'twitter', 'tumblr' ]
@@ -53,7 +66,7 @@ class App extends Component {
     const ps = posts.filter((p) => displaying[p.platform])
     return (
       <Fragment>
-        <header>
+        <Header>
           <Info />
           {platforms.map((p) =>
             <Checkbox
@@ -63,11 +76,11 @@ class App extends Component {
               checked={displaying[p]}
             />
           )}
-        </header>
+        </Header>
         <main>
-          <Masonry updateOnEachImageLoad elementType="section">
+          <Section>
             {ps.map((post) => <Card key={post.id} {...post} />)}
-          </Masonry>
+          </Section>
         </main>
       </Fragment>
     )
