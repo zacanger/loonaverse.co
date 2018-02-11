@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 
-const oneMinute = 1000 * 60
 const flatten = require('zeelib/lib/flatten').default
+const oneMinute = 1000 * 60
 const fiveMinutes = oneMinute * 5
 const Cache = require('./cache')
 const getTumblr = require('./apis/tumblr')
@@ -63,7 +63,7 @@ const buildTumblrs = async () => {
 
 buildTumblrs()
 buildTwitters()
-setInterval(buildTumblrs, fiveMinutes)
-setInterval(buildTwitters, fiveMinutes)
+setInterval(buildTumblrs, fiveMinutes * 2)
+setInterval(buildTwitters, oneMinute)
 
 module.exports = async () => buildEverything(cache.posts)
