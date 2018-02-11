@@ -1,17 +1,17 @@
 import React, { Component, Fragment } from 'react'
-import g from 'glamorous'
+import c from 'cxs/component'
 import Card from './card'
 import Info from './info'
 import Checkbox from './checkbox'
 
-const Header = g.header({
+const Header = c('header')({
   position: 'fixed',
   padding: '8px',
   background: 'white',
   zIndex: 3
 })
 
-const Section = g.section({
+const Section = c('section')({
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap'

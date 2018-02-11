@@ -28,9 +28,8 @@
   ],
   "dependencies": {
     "babel-polyfill": "6.26.0",
+    "cxs": "6.1.0",
     "forever": "0.15.3",
-    "glamor": "2.20.40",
-    "glamorous": "4.11.4",
     "koa": "2.4.1",
     "koa-compress": "2.0.0",
     "koa-ctx-cache-control": "1.0.1",
