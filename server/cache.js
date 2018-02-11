@@ -1,6 +1,6 @@
+const { maxPosts } = require('../config')
 const take = require('zeelib/lib/take').default
 const { sortByDate, uniqueById } = require('./util')
-const maxPosts = 1000
 const limitPosts = (posts) => take(maxPosts, uniqueById(posts))
 
 module.exports = class Cache {
