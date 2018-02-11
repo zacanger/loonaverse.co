@@ -85,8 +85,6 @@ _references.js
 bower_components
 build.js
 build/Release
-bundle
-bundle.js
 cabal-dev
 cabal.project.local
 cabal.sandbox.config

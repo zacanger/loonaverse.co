@@ -136,4 +136,5 @@ Procfile text
 *.PDF diff=astextplain
 
 package-lock.json -diff
+bundle.js -diff
 flow-typed/**/* -diff
