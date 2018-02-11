@@ -29,6 +29,8 @@
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "forever": "0.15.3",
+    "glamor": "2.20.40",
+    "glamorous": "4.11.4",
     "koa": "2.4.1",
     "koa-compress": "2.0.0",
     "koa-ctx-cache-control": "1.0.1",
@@ -39,7 +41,6 @@
     "koa-simple-static": "0.9.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
-    "react-masonry-component": "6.0.2",
     "tumblr.js": "1.1.1",
     "twitter": "1.7.1",
     "whatwg-fetch": "2.0.3",
