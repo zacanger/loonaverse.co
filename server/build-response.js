@@ -36,7 +36,8 @@ const buildEverything = (...caches) => combinePosts(...caches)
 
 const buildTwitters = async () => {
   try {
-    const responses = await Promise.all(tags.twitter.map((tag) => getTwitter.get('search/tweets', {
+    // const responses = await Promise.all(tags.twitter.map((tag) => getTwitter.get('search/tweets', {
+    const responses = await Promise.all([ 'loona' ].map((tag) => getTwitter.get('search/tweets', {
       q: tag,
       result_type: 'recent',
       count: 100
