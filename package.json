@@ -10,9 +10,10 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch server/ .",
-    "start": "forever start -a -l f.log -e e.log -o o.log index.js",
     "build": "webpack -p",
+    "dev": "nodemon --watch server/ .",
+    "prebuild": "npm t",
+    "start": "forever start -a -l f.log -e e.log -o o.log index.js",
     "test": "npm run test:lint",
     "test:lint": "eslint -c .eslintrc.json client server"
   },

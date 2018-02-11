@@ -4,7 +4,18 @@ import Card from './card'
 import Info from './info'
 import Checkbox from './checkbox'
 
+const Toggles = g.div({
+  paddingRight: '32px'
+})
 const Header = g.header({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  boxShadow: '1px 1px 2px #999',
+  justifyContent: 'space-between',
+  top: '0px',
+  left: '0px',
+  width: '100%',
   position: 'fixed',
   padding: '8px',
   background: 'white',
@@ -68,14 +79,16 @@ class App extends Component {
       <Fragment>
         <Header>
           <Info />
-          {platforms.map((p) =>
-            <Checkbox
-              key={p}
-              platform={p}
-              handleChange={this.handleCheckboxChange}
-              checked={displaying[p]}
-            />
-          )}
+          <Toggles>
+            {platforms.map((p) =>
+              <Checkbox
+                key={p}
+                platform={p}
+                handleChange={this.handleCheckboxChange}
+                checked={displaying[p]}
+              />
+            )}
+          </Toggles>
         </Header>
         <main>
           <Section>
