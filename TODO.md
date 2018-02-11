@@ -1,4 +1,5 @@
 * https
+* switch to preact or some interesting thing?
 * social:
   * more platforms:
     * naver
