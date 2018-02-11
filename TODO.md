@@ -6,5 +6,7 @@
     * amino
     * kakao something
     * instagram
+  * cache tumblr and twitter seperately again, since twitter is so overwhelming
+    it pushes out the good tumblr posts
 * non-social (possible future features):
   * ???????/
