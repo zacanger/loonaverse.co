@@ -24,6 +24,7 @@ const twitterSeed = addTwitter(noRetweets(_twitterSeed)).map(formatPost)
 
 const cache = new Cache([ ...tumblrSeed, ...twitterSeed ])
 
+const cacheLen = (c) => c && c.posts && c.posts.length
 const combinePosts = (...caches) => {
   const posts = []
   caches.forEach((cache) => {
@@ -44,6 +45,7 @@ const buildTwitters = async () => {
     })))
     const newTwitters = addTwitter(noRetweets(flatten(responses.map(({ statuses }) => statuses)))).map(formatPost)
     cache.add(newTwitters)
+    console.log('added twitters', cacheLen(cache))
   } catch (err) {
     console.log('Error refreshing Twitter')
     console.trace(err)
@@ -55,6 +57,7 @@ const buildTumblrs = async () => {
     const responses = await Promise.all(tags.tumblr.map((tag) => getTumblr(tag)))
     const newTumblrs = addTumblr(flatten(responses)).map(formatPost)
     cache.add(newTumblrs)
+    console.log('added tumblrs', cacheLen(cache))
   } catch (err) {
     console.log('Error refreshing Tumblr')
     console.trace(err)
