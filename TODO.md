@@ -1,4 +1,5 @@
 * https
+* automate deployment
 * switch to preact or some interesting thing?
 * social:
   * more platforms:
