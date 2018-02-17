@@ -29,9 +29,10 @@
   ],
   "dependencies": {
     "babel-polyfill": "6.26.0",
+    "boring-cluster": "1.0.2",
     "forever": "0.15.3",
     "glamor": "2.20.40",
-    "glamorous": "4.11.5",
+    "glamorous": "4.11.6",
     "koa": "2.5.0",
     "koa-compress": "2.0.0",
     "koa-ctx-cache-control": "1.0.1",
@@ -45,7 +46,7 @@
     "tumblr.js": "1.1.1",
     "twitter": "1.7.1",
     "whatwg-fetch": "2.0.3",
-    "zeelib": "6.0.4"
+    "zeelib": "6.1.0"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
