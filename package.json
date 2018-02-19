@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "babel-polyfill": "6.26.0",
-    "boring-cluster": "1.1.0",
+    "boring-cluster": "1.1.1",
     "forever": "0.15.3",
     "glamor": "2.20.40",
     "glamorous": "4.11.6",
@@ -64,7 +64,7 @@
     "eslint-plugin-promise": "3.6.0",
     "eslint-plugin-react": "7.6.1",
     "eslint-plugin-unicorn": "4.0.2",
-    "nodemon": "1.15.0",
+    "nodemon": "1.15.1",
     "prop-types": "15.6.0",
     "webpack": "3.11.0"
   },
