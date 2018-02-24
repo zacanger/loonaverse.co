@@ -46,7 +46,7 @@
     "tumblr.js": "1.1.1",
     "twitter": "1.7.1",
     "whatwg-fetch": "2.0.3",
-    "zeelib": "6.1.2"
+    "zeelib": "6.1.4"
   },
   "devDependencies": {
     "babel-core": "6.26.0",

@@ -9,11 +9,8 @@ const helmet = require('koa-helmet')
 const compress = require('koa-helmet')
 
 const buildResponse = require('./build-response')
-
 const router = new Router()
-
-const time1minute = 1000 * 60
-
+const oneMinute = 1000 * 60
 const app = module.exports = new Koa()
 
 app.port = process.env.PORT || 9000
@@ -21,7 +18,7 @@ app.port = process.env.PORT || 9000
 router.get('/posts.json', async (ctx) => {
   ctx.status = 200
   ctx.type = 'application/json'
-  ctx.cacheControl(time1minute)
+  ctx.cacheControl(oneMinute)
   const body = await buildResponse()
   ctx.body = body
 })
@@ -33,7 +30,7 @@ cacheControl(app)
 app.use(lowercase)
 app.use(serve({
   dir: resolve(__dirname, '..', 'public'),
-  maxAge: (time1minute * 5) / 1000
+  maxAge: (oneMinute * 5) / 1000
 }))
 app.use(router.routes())
 app.use(router.allowedMethods())
