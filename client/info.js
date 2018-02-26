@@ -1,6 +1,7 @@
 import React from 'react'
 import g from 'glamorous'
 
+const youtubeLink = 'https://www.youtube.com/watch?v=mybsDDymrsc&list=PLtcTpq9htoKzrWNw3PR7hN9IQ0JuxrjQU'
 const A = g.a({
   ':hover,:active,:focus': {
     textDecoration: 'underline'
@@ -11,7 +12,8 @@ const Info = () => (
     <span>
       Loonaverse is a
       {' '}<A href="https://github.com/zacanger/loonaverse.co" target="_blank">free software project</A>
-      {' '}by <A href="http://zacanger.com" target="_blank">zac anger</A>
+      {' '}by <A href="http://zacanger.com" target="_blank">zac anger</A>.
+      {' '}<A href={youtubeLink} target="_blank">click here to stream all official MVs with less than 1M views</A>.
     </span>
   </small>
 )
