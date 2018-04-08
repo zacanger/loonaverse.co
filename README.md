@@ -1,6 +1,6 @@
 # <http://loonaverse.co>
 
-![screenshot](http://zacanger.com/assets/loonaverse.png)
+![screenshot](/screenshot.png?raw=true)
 
 The source for [Loonaverse](http://loonaverse.co), a Loona-related social post
 aggregator.
