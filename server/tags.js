@@ -19,6 +19,7 @@ const baseTags = [
   'park-chae-won',
   'son-hye-joo',
   'son-hyejoo',
+  'sooyoung',
   'vivi',
   'wong-kahei',
   'wong-viian',
