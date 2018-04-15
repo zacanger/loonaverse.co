@@ -17,7 +17,8 @@ const baseTags = [
   '1/3',
   'odd-eye-circle',
   'oddeyecircle',
-  'oec'
+  'oec',
+  'olivia-hye'
 ]
 
 const twitter = baseTags

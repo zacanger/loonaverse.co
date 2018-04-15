@@ -52,7 +52,7 @@ const buildTwitters = async () => {
 
 const buildTumblrs = async () => {
   try {
-    const responses = await Promise.all(tags.tumblr.map((tag) => getTumblr(tag)))
+    const responses = await Promise.all(tags.tumblr.map(getTumblr))
     const newTumblrs = addTumblr(flatten(responses)).map(formatPost)
     cache.add(newTumblrs)
   } catch (err) {
