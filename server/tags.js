@@ -8,7 +8,6 @@ const baseTags = [
   'heejin',
   'hyunjin',
   'jinsoul',
-  'jiwoo',
   'kim-lip',
   'kimlip',
   'loona',
