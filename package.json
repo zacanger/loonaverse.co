@@ -58,7 +58,7 @@
     "babel-preset-env": "1.6.1",
     "babel-preset-react": "6.24.1",
     "eslint": "4.19.1",
-    "eslint-config-jane": "2.0.2",
+    "eslint-config-zacanger": "3.1.0",
     "eslint-plugin-babel": "5.0.0",
     "eslint-plugin-import": "2.11.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
