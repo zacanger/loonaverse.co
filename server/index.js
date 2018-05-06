@@ -1,8 +1,8 @@
 const { resolve } = require('path')
 const Koa = require('koa')
 const favicon = require('koa-favicon')
-const serve = require('koa-simple-static').default
-const lowercase = require('koa-lowercase').default
+const serve = require('koa-simple-static')
+const lowercase = require('koa-lowercase')
 const Router = require('koa-router')
 const cacheControl = require('koa-ctx-cache-control')
 const helmet = require('koa-helmet')

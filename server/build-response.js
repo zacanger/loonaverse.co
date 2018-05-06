@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 
-const flatten = require('zeelib/lib/flatten').default
+const flatten = require('zeelib/lib/flatten')
 const oneMinute = 1000 * 60
 const fiveMinutes = oneMinute * 5
 const Cache = require('./cache')

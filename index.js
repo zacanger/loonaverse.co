@@ -1,3 +1,2 @@
 const cluster = require('boring-cluster')
-const { resolve } = require('path')
-cluster(resolve(__dirname, 'server'), { name: 'Loonaverse' })
+cluster('server', { name: 'Loonaverse' })

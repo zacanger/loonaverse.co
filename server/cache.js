@@ -1,5 +1,5 @@
 const { maxPosts } = require('../config')
-const take = require('zeelib/lib/take').default
+const take = require('zeelib/lib/take')
 const { sortByDate, uniqueById } = require('./util')
 const limitPosts = (posts) => take(maxPosts, uniqueById(posts))
 
