@@ -34,7 +34,8 @@ const Header = g.header({
 const Section = g.section({
   display: 'flex',
   flexDirection: 'row',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  justifyContent: 'center'
 })
 
 const oneMinute = 60 * 1000
