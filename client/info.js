@@ -1,8 +1,9 @@
 import React from 'react'
-import g from 'glamorous'
+import cxs from 'cxs/component'
 
 const youtubeLink = 'https://www.youtube.com/watch?v=pYbUP6qkU7M&list=PLtcTpq9htoKzrWNw3PR7hN9IQ0JuxrjQU&index=1'
-const A = g.a({
+
+const A = cxs('a')({
   ':hover,:active,:focus': {
     textDecoration: 'underline'
   }

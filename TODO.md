@@ -1,7 +1,6 @@
 * https
 * automate deployment
 * switch to preact?
-* switch to CXS?
 * social:
   * more platforms:
     * naver

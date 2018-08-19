@@ -1,8 +1,8 @@
 import React from 'react'
-import g from 'glamorous'
+import cxs from 'cxs/component'
 import { string } from 'prop-types'
 
-const Article = g.article({
+const Article = cxs('article')({
   ':hover,:active,:focus': {
     boxShadow: '0 10px 20px 0 rgba(0, 0, 0, 0.15)',
     transform: 'translate(1px, -3px)'
@@ -21,7 +21,7 @@ const Article = g.article({
   }
 })
 
-const Small = g.small({
+const Small = cxs('small')({
   textAlign: 'right',
   marginBottom: '8px'
 })

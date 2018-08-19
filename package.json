@@ -11,7 +11,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack-cli -p",
-    "dev": "nodemon --watch server/ .",
+    "dev": "nodemon --watch server/ server/index.js",
     "prebuild": "npm t",
     "start": "forever start -a -l f.log -e e.log -o o.log server/index.js",
     "test": "npm run test:lint",
@@ -29,9 +29,8 @@
   ],
   "dependencies": {
     "babel-polyfill": "6.26.0",
+    "cxs": "6.2.0",
     "forever": "0.15.3",
-    "glamor": "2.20.40",
-    "glamorous": "4.13.1",
     "koa": "2.5.2",
     "koa-compress": "3.0.0",
     "koa-ctx-cache-control": "1.0.1",
