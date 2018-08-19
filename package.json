@@ -11,7 +11,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack-cli -p",
-    "dev": "nodemon --watch server/ .",
+    "dev": "nodemon --watch server/ --watch public/ server/index.js",
     "prebuild": "npm t",
     "start": "forever start -a -l f.log -e e.log -o o.log server/index.js",
     "test": "npm run test:lint",
