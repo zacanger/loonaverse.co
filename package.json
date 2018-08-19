@@ -13,7 +13,7 @@
     "build": "webpack-cli -p",
     "dev": "nodemon --watch server/ .",
     "prebuild": "npm t",
-    "start": "forever start -a -l f.log -e e.log -o o.log index.js",
+    "start": "forever start -a -l f.log -e e.log -o o.log server/index.js",
     "test": "npm run test:lint",
     "test:lint": "eslint -c .eslintrc.json client server"
   },
@@ -29,7 +29,6 @@
   ],
   "dependencies": {
     "babel-polyfill": "6.26.0",
-    "boring-cluster": "3.0.0",
     "forever": "0.15.3",
     "glamor": "2.20.40",
     "glamorous": "4.12.5",
