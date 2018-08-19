@@ -1,7 +1,7 @@
 import React from 'react'
 import g from 'glamorous'
 
-const youtubeLink = 'https://www.youtube.com/watch?v=mybsDDymrsc&list=PLtcTpq9htoKzrWNw3PR7hN9IQ0JuxrjQU'
+const youtubeLink = 'https://www.youtube.com/watch?v=pYbUP6qkU7M&list=PLtcTpq9htoKzrWNw3PR7hN9IQ0JuxrjQU&index=1'
 const A = g.a({
   ':hover,:active,:focus': {
     textDecoration: 'underline'
