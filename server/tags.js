@@ -11,6 +11,8 @@ const baseTags = [
   'kim-lip',
   'kimlip',
   'loona',
+  'loonabirth',
+  'loonablastingoff',
   'odd-eye-circle',
   'oddeyecircle',
   'oec',
@@ -24,6 +26,7 @@ const baseTags = [
   'wong-viian',
   'yeojin',
   'yves',
+  'yyxy',
   '이달의소녀'
 ]
 
