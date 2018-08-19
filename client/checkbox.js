@@ -1,14 +1,14 @@
 import React from 'react'
-import cxs from 'cxs/component'
+import g from 'glamorous'
 import { string, func, bool } from 'prop-types'
 
-const Small = cxs('small')({
+const Small = g.small({
   marginLeft: '8px',
   marginRight: '8px',
   userSelect: 'none'
 })
 
-const Label = cxs('label')({
+const Label = g.label({
   cursor: 'pointer'
 })
 

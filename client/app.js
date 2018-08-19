@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react'
-import cxs from 'cxs/component'
+import g from 'glamorous'
 import Card from './card'
 import Info from './info'
 import Checkbox from './checkbox'
 
-const Logo = cxs('img')({
+const Logo = g.img({
   marginLeft: 'auto',
   marginRight: 'auto',
   maxWidth: '100%',
@@ -12,11 +12,11 @@ const Logo = cxs('img')({
   display: 'block'
 })
 
-const Toggles = cxs('div')({
+const Toggles = g.div({
   paddingRight: '32px'
 })
 
-const Header = cxs('header')({
+const Header = g.header({
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
@@ -31,7 +31,7 @@ const Header = cxs('header')({
   zIndex: 3
 })
 
-const Section = cxs('section')({
+const Section = g.section({
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap'
