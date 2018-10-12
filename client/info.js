@@ -12,7 +12,7 @@ const Info = () => (
     <span>
       Loonaverse is a
       {' '}<A href="https://github.com/zacanger/loonaverse.co" target="_blank">free software project</A>
-      {' '}by <A href="http://zacanger.com" target="_blank">zac anger</A>.
+      {' '}by <A href="https://zacanger.com" target="_blank">zac anger</A>.
       {' '}<A href={youtubeLink} target="_blank">click here to stream all official MVs with less than 1M views</A>.
     </span>
   </small>
