@@ -1,14 +1,14 @@
 import React from 'react'
-import g from 'glamorous'
+import styled from 'react-emotion'
 import { string, func, bool } from 'prop-types'
 
-const Small = g.small({
+const Small = styled('small')({
   marginLeft: '8px',
   marginRight: '8px',
   userSelect: 'none'
 })
 
-const Label = g.label({
+const Label = styled('label')({
   cursor: 'pointer'
 })
 

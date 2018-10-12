@@ -1,8 +1,8 @@
 import React from 'react'
-import g from 'glamorous'
+import styled from 'react-emotion'
 
 const youtubeLink = 'https://www.youtube.com/watch?v=pYbUP6qkU7M&list=PLtcTpq9htoKzrWNw3PR7hN9IQ0JuxrjQU&index=1'
-const A = g.a({
+const A = styled('a')({
   ':hover,:active,:focus': {
     textDecoration: 'underline'
   }
