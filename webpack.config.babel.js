@@ -17,10 +17,10 @@ export default {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [ 'react', [ 'env', { modules: false } ] ],
+            presets: [ '@babel/preset-react', [ '@babel/preset-env', { modules: false } ] ],
             plugins: [
-              'transform-class-properties',
-              'transform-object-rest-spread',
+              '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-proposal-object-rest-spread',
               [ 'transform-react-remove-prop-types', { removeImport: true } ]
             ]
           }
