@@ -1,8 +1,6 @@
 * dev and ops:
   * https
   * automate deployment
-  * switch to preact?
-  * switch to CXS?
   * move to own server
   * cache tumblr and twitter seperately again, since twitter is so overwhelming it pushes out the good tumblr posts
   * fix sort by date, what's happening there?
