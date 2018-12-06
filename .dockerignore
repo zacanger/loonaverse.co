@@ -1,0 +1,13 @@
+*.log
+*.out
+*.pyc
+*.swp
+.DS_Store
+.dockerignore
+.git
+.gitattibutes
+.gitignore
+.npmrc
+README.md
+tmp
+x
