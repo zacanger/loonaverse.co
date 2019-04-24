@@ -10,8 +10,8 @@ aggregator.
 The server is Koa, client is React. The bundle is checked in because I deploy
 this manually on a little VPS right now.
 
-If you want to fork this to work non-Loona tags, all you need to do is change
-`tags.js` and add a `config.js` in the root:
+If you want to fork this to work with non-Loona tags, all you need to do is
+change `tags.js` and add a `config.js` in the root:
 
 ```javascript
 module.exports = {
