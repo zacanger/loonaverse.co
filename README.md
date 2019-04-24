@@ -1,5 +1,7 @@
 # <http://loonaverse.co>
 
+WIP doesn't exist at that URL again yet
+
 ![screenshot](/screenshot.png?raw=true)
 
 The source for [Loonaverse](http://loonaverse.co), a Loona-related social post
